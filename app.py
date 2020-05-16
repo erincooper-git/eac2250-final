@@ -17,13 +17,13 @@ app = Flask(__name__)
 def hello():
     return render_template('index.html')
 
-@app.route("/1006")
-def tenosix():
-    return render_template('1006.html')
+@app.route("/classes")
+def classes():
+    return render_template('link.html')
 
-@app.route("/columbia")
-def columbia():
-    return "Columbia!!" 
+@app.route("/moosic")
+def jams():
+    return render_template('1006.html')
 #start the server
 if __name__ == "__main__":
     app.run()
