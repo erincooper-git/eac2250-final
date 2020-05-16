@@ -1,12 +1,40 @@
 <!DOCTYPE html>
+<!doctype html>
+<title>{% block title %}{% endblock %} - Flaskr</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<nav>
+  <h1>Flaskr</h1>
+  <ul>
+    {% if g.user %}
+      <li><span>{{ g.user['username'] }}</span>
+      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+    {% else %}
+      <li><a href="{{ url_for('auth.register') }}">Register</a>
+      <li><a href="{{ url_for('auth.login') }}">Log In</a>
+    {% endif %}
+  </ul>
+</nav>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>
 <html>
     <head>
         <!--specifies title of the page !-->
         <title>Home</title>
     <head>
+    <center><b>Hello! My name is Erin Cooper.</b></center>
     <body>
-    <p>Hello World!</p>
-     <a href="/columbia">Visit Columbia Section of Websites</a> 
+    <img src="images/headshot1.jpg"style="height:200px;width:100px;float:left">
+    <p>I am a sophomore and I am studying Mechanical Engineering and Applied Physics.</p>
+    <a href="/columbia">Click here to see more</a> 
+    <a href="https://www.themoth.org/">Click here to see my favorite website!</a> <p> my favorite websites used to be calming manatees and serendipity by spotify but since those have been shut down..</p>
+     
     </body>
 </html>
 
